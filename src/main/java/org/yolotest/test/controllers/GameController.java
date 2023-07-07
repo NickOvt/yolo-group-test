@@ -1,5 +1,7 @@
 package org.yolotest.test.controllers;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -17,7 +19,7 @@ public class GameController {
 
     @MessageMapping("/game")
     @SendTo("/topic/game")
-    public BigDecimal playGame (GameRequestDto gameRequestDto) {
+    public BigDecimal playGame (@Valid @NotNull GameRequestDto gameRequestDto) {
         return gameService.playGame(gameRequestDto);
     }
 }
