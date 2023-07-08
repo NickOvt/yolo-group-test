@@ -9,8 +9,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.yolotest.test.dtos.DtoFieldValidationError;
-import org.yolotest.test.dtos.DtoValidationErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,7 @@
 package org.yolotest.test.services;
 
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.yolotest.test.dtos.GameRequestDto;
@@ -9,10 +10,9 @@ import java.math.BigDecimal;
 import java.security.SecureRandom;
 
 @Service
-@RequiredArgsConstructor
 public class GameService {
 
-    private final SecureRandom secureRandom;
+    private final SecureRandom secureRandom = new SecureRandom();
 
     public BigDecimal playGame(GameRequestDto gameRequestDto) {
         // initialize win

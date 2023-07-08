@@ -6,12 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 import org.yolotest.test.dtos.GameRequestDto;
 import org.yolotest.test.services.GameService;
 
 import java.math.BigDecimal;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
 public class GameController {
 
