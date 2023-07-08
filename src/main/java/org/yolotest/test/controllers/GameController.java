@@ -5,12 +5,12 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.yolotest.test.dtos.GameRequestDto;
+import org.yolotest.test.dtos.WinDto;
 import org.yolotest.test.services.GameService;
-
-import java.math.BigDecimal;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,9 +18,14 @@ public class GameController {
 
     private final GameService gameService;
 
+    @PostMapping("/rest_api/game")
+    public WinDto playGameRest(@RequestBody @NotNull @Valid GameRequestDto gameRequestDto) {
+        return gameService.playGame(gameRequestDto);
+    }
+
     @MessageMapping("/game")
     @SendTo("/topic/game")
-    public BigDecimal playGame (@Valid @NotNull GameRequestDto gameRequestDto) {
+    public WinDto playGame (@Valid @NotNull GameRequestDto gameRequestDto) {
         return gameService.playGame(gameRequestDto);
     }
 }

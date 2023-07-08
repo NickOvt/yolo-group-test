@@ -1,10 +1,8 @@
 package org.yolotest.test.services;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.yolotest.test.dtos.GameRequestDto;
+import org.yolotest.test.dtos.WinDto;
 
 import java.math.BigDecimal;
 import java.security.SecureRandom;
@@ -14,7 +12,7 @@ public class GameService {
 
     private final SecureRandom secureRandom = new SecureRandom();
 
-    public BigDecimal playGame(GameRequestDto gameRequestDto) {
+    public WinDto playGame(GameRequestDto gameRequestDto) {
         // initialize win
         BigDecimal win = BigDecimal.ZERO;
 
@@ -31,6 +29,6 @@ public class GameService {
             win = gameRequestDto.bet().multiply(BigDecimal.valueOf((99 / (100 - gameRequestDto.number()))));
         }
 
-        return win;
+        return new WinDto(win);
     }
 }
