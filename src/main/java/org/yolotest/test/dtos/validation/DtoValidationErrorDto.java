@@ -1,4 +1,4 @@
-package org.yolotest.test.dtos;
+package org.yolotest.test.dtos.validation;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.yolotest.test.dtos;
+package org.yolotest.test.dtos.game;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

@@ -1,10 +1,11 @@
 package org.yolotest.test.services;
 
 import org.springframework.stereotype.Service;
-import org.yolotest.test.dtos.GameRequestDto;
-import org.yolotest.test.dtos.WinDto;
+import org.yolotest.test.dtos.game.GameRequestDto;
+import org.yolotest.test.dtos.game.WinDto;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.SecureRandom;
 
 @Service
@@ -26,9 +27,12 @@ public class GameService {
         // if randomNum is bigger than the user's number then calculate win
         // otherwise if less there is no win
         if (randomNum > gameRequestDto.number()) {
-            win = gameRequestDto.bet().multiply(BigDecimal.valueOf((99 / (100 - gameRequestDto.number()))));
+            win = gameRequestDto.bet().multiply(BigDecimal.valueOf(((float) 99 / (float) (100 - gameRequestDto.number()))));
+            win = win.setScale(2, RoundingMode.HALF_EVEN);
         }
 
-        return new WinDto(win);
+        final boolean isWin = !(win.equals(BigDecimal.ZERO));
+
+        return new WinDto(win, isWin);
     }
 }
