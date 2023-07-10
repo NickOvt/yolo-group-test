@@ -19,7 +19,7 @@ public class GameController {
     private final GameService gameService;
 
     @PostMapping("/rest_api/game")
-    public WinDto playGameRest(@RequestBody @NotNull(message = "Data cannot be empty") @Valid GameRequestDto gameRequestDto) {
+    public WinDto playGameRest(@RequestBody @Valid GameRequestDto gameRequestDto) {
         return gameService.playGame(gameRequestDto);
     }
 
