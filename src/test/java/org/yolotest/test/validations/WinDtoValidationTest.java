@@ -5,7 +5,6 @@ import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.Test;
-import org.yolotest.test.dtos.game.GameRequestDto;
 import org.yolotest.test.dtos.game.WinDto;
 
 import java.math.BigDecimal;
