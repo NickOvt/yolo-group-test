@@ -31,7 +31,7 @@ public class GameService {
             win = win.setScale(2, RoundingMode.HALF_EVEN);
         }
 
-        final boolean isWin = !(win.equals(BigDecimal.ZERO));
+        final Boolean isWin = !(win.equals(BigDecimal.ZERO));
 
         return new WinDto(win, isWin);
     }
