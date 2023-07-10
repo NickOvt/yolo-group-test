@@ -5,8 +5,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-    @GetMapping("rest_api/hello")
+    @GetMapping("/api/public/hello")
     public String hello() {
+        return "Hello from the server";
+    }
+
+    @GetMapping("/api/public")
+    public String helloRoot() {
         return "Hello from the server";
     }
 }

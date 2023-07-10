@@ -18,7 +18,7 @@ public class GameController {
 
     private final GameService gameService;
 
-    @PostMapping("/rest_api/game")
+    @PostMapping("/api/public/game")
     public WinDto playGameRest(@RequestBody @Valid GameRequestDto gameRequestDto) {
         return gameService.playGame(gameRequestDto);
     }
