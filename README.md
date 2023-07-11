@@ -7,11 +7,12 @@
 - Dependencies: Gradle: latest
 
 #### Project (Spring Boot) dependencies
-- 'org.springframework.boot:spring-boot-starter-web'
-- 'org.springframework.boot:spring-boot-starter-websocket'
-- 'org.projectlombok:lombok'
-- 'org.springframework.boot:spring-boot-starter-test'
-- 'org.springframework.boot:spring-boot-starter-validation'
+- implementation 'org.springframework.boot:spring-boot-starter-web'
+- implementation 'org.springframework.boot:spring-boot-starter-websocket'
+- compileOnly 'org.projectlombok:lombok'
+- annotationProcessor 'org.projectlombok:lombok'
+- testImplementation 'org.springframework.boot:spring-boot-starter-test'
+- implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 ## Running in IDE
 Running the project in an IDE such an intellij IDEA should be relatively straightforward.
