@@ -26,8 +26,8 @@ public class GameService {
 
         // if randomNum is bigger than the user's number then calculate win
         // otherwise if less there is no win
-        if (randomNum > gameRequestDto.number()) {
-            win = gameRequestDto.bet().multiply(BigDecimal.valueOf(((float) 99 / (float) (100 - gameRequestDto.number()))));
+        if (randomNum > gameRequestDto.getNumber()) {
+            win = gameRequestDto.getBet().multiply(BigDecimal.valueOf((99 / (float) (100 - gameRequestDto.getNumber()))));
             win = win.setScale(2, RoundingMode.HALF_EVEN);
         }
 

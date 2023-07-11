@@ -1,3 +1,8 @@
 package org.yolotest.test.dtos.errors;
 
-public record ErrorResponse(String message) { }
+import lombok.Value;
+
+@Value
+public class ErrorResponse {
+    String message;
+}

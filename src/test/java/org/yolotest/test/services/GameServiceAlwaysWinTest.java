@@ -28,7 +28,7 @@ class GameServiceAlwaysWinTest {
                     BigDecimal win = BigDecimal.ZERO;
 
                     // generate random int between 1 and 100 (both included)
-                    int randomNum = gameRequestDto.number() + 1;
+                    int randomNum = gameRequestDto.getNumber() + 1;
 
                     // * Win depends on chance: = bet * (99 / (100 - number)),
                     // as an example, if player selected the number 50
@@ -36,8 +36,8 @@ class GameServiceAlwaysWinTest {
 
                     // if randomNum is bigger than the user's number then calculate win
                     // otherwise if less there is no win
-                    if (randomNum > gameRequestDto.number()) {
-                        win = gameRequestDto.bet().multiply(BigDecimal.valueOf(((float) 99 / (float) (100 - gameRequestDto.number()))));
+                    if (randomNum > gameRequestDto.getNumber()) {
+                        win = gameRequestDto.getBet().multiply(BigDecimal.valueOf(((float) 99 / (float) (100 - gameRequestDto.getNumber()))));
                         win = win.setScale(2, RoundingMode.HALF_EVEN);
                     }
 
@@ -66,8 +66,8 @@ class GameServiceAlwaysWinTest {
         WinDto winDto = gameService.playGame(gameRequestDto);
 
         // then
-        assertTrue(winDto.isWin());
-        assertEquals(BigDecimal.valueOf(80.19), winDto.winScore());
+        assertTrue(winDto.getIsWin());
+        assertEquals(BigDecimal.valueOf(80.19), winDto.getWinScore());
     }
 
     @Test
@@ -79,8 +79,8 @@ class GameServiceAlwaysWinTest {
         WinDto winDto = gameService.playGame(gameRequestDto);
 
         // then
-        assertTrue(winDto.isWin());
-        assertEquals(BigDecimal.valueOf(45.10).setScale(2, RoundingMode.HALF_EVEN), winDto.winScore());
+        assertTrue(winDto.getIsWin());
+        assertEquals(BigDecimal.valueOf(45.10).setScale(2, RoundingMode.HALF_EVEN), winDto.getWinScore());
     }
 
     @Test
@@ -92,7 +92,7 @@ class GameServiceAlwaysWinTest {
         WinDto winDto = gameService.playGame(gameRequestDto);
 
         // then
-        assertTrue(winDto.isWin());
-        assertEquals(BigDecimal.valueOf(1979.99), winDto.winScore());
+        assertTrue(winDto.getIsWin());
+        assertEquals(BigDecimal.valueOf(1979.99), winDto.getWinScore());
     }
 }

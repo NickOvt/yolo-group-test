@@ -41,7 +41,7 @@ class GameServiceRTPTest {
         }
 
         for (GameRequestDto gameRequestDto : gameRequestDtoListInitial) {
-            totalBet = totalBet.add(gameRequestDto.bet());
+            totalBet = totalBet.add(gameRequestDto.getBet());
         }
 
         for (int i = 0; i < 1_000_000; i++) {
@@ -62,13 +62,13 @@ class GameServiceRTPTest {
 
         for (Future<WinDto> future : resultList) {
             if (future.isDone()) {
-                totalWon = totalWon.add(future.get().winScore());
+                totalWon = totalWon.add(future.get().getWinScore());
             }
         }
 
         System.out.println(totalBet);
         System.out.println(totalWon);
-        System.out.println(totalWon.divide(totalBet, RoundingMode.HALF_EVEN).multiply(BigDecimal.valueOf(100)) + "%");
+        System.out.println("RTP is: " + totalWon.divide(totalBet, RoundingMode.HALF_EVEN).multiply(BigDecimal.valueOf(100)) + "%");
     }
 
 }

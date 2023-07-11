@@ -26,7 +26,7 @@ class GameServiceAlwaysLoseTest {
                     BigDecimal win = BigDecimal.ZERO;
 
                     // generate random int between 1 and 100 (both included)
-                    int randomNum = gameRequestDto.number() - 1;
+                    int randomNum = gameRequestDto.getNumber() - 1;
 
                     // * Win depends on chance: = bet * (99 / (100 - number)),
                     // as an example, if player selected the number 50
@@ -34,8 +34,8 @@ class GameServiceAlwaysLoseTest {
 
                     // if randomNum is bigger than the user's number then calculate win
                     // otherwise if less there is no win
-                    if (randomNum > gameRequestDto.number()) {
-                        win = gameRequestDto.bet().multiply(BigDecimal.valueOf(((float) 99 / (float) (100 - gameRequestDto.number()))));
+                    if (randomNum > gameRequestDto.getNumber()) {
+                        win = gameRequestDto.getBet().multiply(BigDecimal.valueOf(((float) 99 / (float) (100 - gameRequestDto.getNumber()))));
                         win = win.setScale(2, RoundingMode.HALF_EVEN);
                     }
 
@@ -64,8 +64,8 @@ class GameServiceAlwaysLoseTest {
         WinDto winDto = gameService.playGame(gameRequestDto);
 
         // then
-        assertFalse(winDto.isWin());
-        assertEquals(BigDecimal.ZERO, winDto.winScore());
+        assertFalse(winDto.getIsWin());
+        assertEquals(BigDecimal.ZERO, winDto.getWinScore());
     }
 
     @Test
@@ -77,8 +77,8 @@ class GameServiceAlwaysLoseTest {
         WinDto winDto = gameService.playGame(gameRequestDto);
 
         // then
-        assertFalse(winDto.isWin());
-        assertEquals(BigDecimal.ZERO, winDto.winScore());
+        assertFalse(winDto.getIsWin());
+        assertEquals(BigDecimal.ZERO, winDto.getWinScore());
     }
 
     @Test
@@ -90,7 +90,7 @@ class GameServiceAlwaysLoseTest {
         WinDto winDto = gameService.playGame(gameRequestDto);
 
         // then
-        assertFalse(winDto.isWin());
-        assertEquals(BigDecimal.ZERO, winDto.winScore());
+        assertFalse(winDto.getIsWin());
+        assertEquals(BigDecimal.ZERO, winDto.getWinScore());
     }
 }

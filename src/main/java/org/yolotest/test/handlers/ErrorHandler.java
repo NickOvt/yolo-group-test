@@ -40,10 +40,6 @@ public class ErrorHandler {
             errors.add(List.of(erroredObjectFieldName, erroredObjectErrorMessage));
         });
 
-//        List<DtoFieldValidationError> dtoFieldValidationErrors = errors.stream().map(el -> new DtoFieldValidationError(el.get(0), el.get(1))).toList();
-//        DtoValidationErrorMessage dtoValidationErrorMessage = new DtoValidationErrorMessage("There is an error with the data provided", dtoFieldValidationErrors);
-//        return new ResponseEntity<>(dtoValidationErrorMessage, HttpStatus.PRECONDITION_FAILED);
-
         return new ResponseEntity<>(errors, HttpStatus.PRECONDITION_FAILED);
     }
 }
